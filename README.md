@@ -6,6 +6,8 @@ This project builds a machine learning model to detect fake job postings using N
 
 It processes job descriptions, requirements, and company details to identify fraudulent listings, helping protect job seekers and maintain trust in online job platforms.
 
+The system provides real-time fraud probability scoring through a REST API and a Streamlit frontend.
+
 # 🎯 Skills Gained
 
 Natural Language Processing (NLP)
@@ -20,107 +22,90 @@ Model evaluation using Precision, Recall, F1-Score, ROC-AUC
 
 Handling imbalanced datasets (SMOTE, class weighting)
 
-## 🏢 Domain
+## 🧠 Features
 
-Human Resources
+Text preprocessing and feature engineering
 
-Job Portals & Search Engines
+TF-IDF vectorization
 
-Online Security
+Multiple classification models (Logistic Regression, SVM, XGBoost)
 
-Text Classification (NLP)
+Model evaluation using:
+
+    Precision
+
+    Recall
+
+    F1-Score
+
+    Confusion Matrix
+
+    ROC-AUC
+
+FastAPI-based REST API for real-time inference
+
+Streamlit frontend with fraud risk visualization
+
+Modular architecture (Model → API → Frontend)
 
 
-## 📍 Problem Statement
+## 🏗️ Project Architecture
 
-Fake job postings are a growing problem on online platforms, posing risks such as identity theft and scams. 
-This project detects fraudulent postings based on textual and metadata features, allowing:
+Streamlit Frontend
+⬇
+FastAPI Backend
+⬇
+TF-IDF Vectorizer + Trained ML Model
 
-1.Job portals to automatically flag suspicious listings
-
-2.Job seekers to avoid scams
-
-3.HR teams to protect company brand reputation
-
-## 💼 Business Use Cases
-
-Job Portals: Screen and block scams before they go live
-
-Job Search Engines: Improve trust by labeling suspicious posts
-
-Corporate HR: Identify fraudulent postings impersonating their brand
-
-Candidate Safety: Protect from phishing and identity theft
 
 ## 📊 Dataset
 
 Source: Kaggle – Fake Job Postings Prediction
 
-Size: ~17,000 job postings
+## 📊 Model Evaluation
 
-Features: Job title, description, location, requirements, benefits, label (real or fake)
+    The models were evaluated using:
 
-## 🛠 Approach
+    Precision, Recall, F1-score
 
-1. Data Preprocessing
+    Confusion Matrix
 
-Handle missing values, drop irrelevant columns
+    ROC-AUC score
 
-Clean text: lowercase, remove HTML tags, punctuation, numbers
+The final model provides fraud probability scoring for risk categorization:
 
-Tokenization and lemmatization
+    Low Risk
 
-Combine multiple text fields into a single feature
+    Medium Risk
 
-2. Feature Extraction
+    High Risk
 
-TF-IDF vectorization (max_features=5000)
+## Run FastAPI Backend
 
-(Optional) Word2Vec embeddings
+    uvicorn app:app --reload
 
-3. Model Training
+   Open API docs at:
 
-Algorithms: Logistic Regression, SVM, XGBoost
+    http://127.0.0.1:8000/docs
 
-Stratified train-test split
+## Run Streamlit Frontend
 
-Hyperparameter tuning with GridSearchCV
+    streamlit run streamlit_app.py
 
-4. Model Evaluation
+## 🎯 Learning Outcomes
 
-Precision, Recall, F1-Score
+End-to-end ML pipeline development
 
-Confusion Matrix
+Model serialization and deployment
 
-ROC-AUC Curve
+REST API development with FastAPI
 
-Precision–Recall Curve
+Frontend integration using Streamlit
 
-SHAP feature importance for explainability
+Real-time ML inference architecture
 
-5. Deployment
 
-Export model & vectorizer with joblib
 
-## 📈 Results
-
-ROC-AUC: 0.98
-
-Recall (Fake class): ~85% (most fake jobs detected)
-
-Precision (Fake class): ~68% (low false alarm rate)
-
-High accuracy with strong balance between catching scams and avoiding false positives.
-
-## 📜 Evaluation Metrics
-
-Precision: Accuracy of scam predictions
-
-Recall: Ability to catch all scams
-
-F1-Score: Balance of precision and recall
-
-Confusion Matrix: Class-wise performance visualization
 
 
 
